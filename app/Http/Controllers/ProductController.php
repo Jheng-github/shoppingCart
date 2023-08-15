@@ -50,12 +50,17 @@ class ProductController extends Controller
         }
     }
 
+    public function index()
+    {
+            
+    }
+
     public function addImage($request, Product $product)
     {
 
         foreach ($request->file('images') as $image) {
             $product->images()->create([
-                'url' =>  $image->store('testtest')
+                'url' =>  $image->store('clothes')
             ]);
         }
     }
