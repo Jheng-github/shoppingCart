@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Carbon\Carbon;
@@ -52,7 +53,9 @@ class ProductController extends Controller
 
     public function index()
     {
-            
+        $getProducts = Product::latest()->get();    
+
+        return ProductCollection::make($getProducts->load('images'));
     }
 
     public function addImage($request, Product $product)
