@@ -59,6 +59,12 @@ class ProductController extends Controller
         return ProductResourceCollection::make($getProducts);
     }
 
+    public function show(Product $product)
+    {
+
+        return ProductResource::make($product->load('images'));
+    }
+
 
         return ProductCollection::make($getProducts->load('images'));
     }
