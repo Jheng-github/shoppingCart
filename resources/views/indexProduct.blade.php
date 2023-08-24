@@ -12,7 +12,7 @@
         <!-- 左侧导航栏 -->
         <nav class="flex w-40 bg-gray-950 text-white  justify-center ">
             <ul class="space-y-5 text-center">
-                <li><a href="#" class="hover:text-gray-300">新增商品</a></li>
+                <li><a href="/products/create" class="hover:text-gray-300">新增商品</a></li>
                 <li><a href="#" class="hover:text-gray-300">查看購物車</a></li>
                 {{-- <li><a href="#" class="hover:text-gray-300"></a></li> --}}
                 <li><a href="#" class="hover:text-gray-300">聯絡我們</a></li>
@@ -40,7 +40,7 @@
 
                     <div id="product-list"
                         class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
-                            {{-- <div class="group relative">
+                        {{-- <div class="group relative">
                                 <div
                                     class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:w-60">
 
@@ -66,6 +66,7 @@
                 </div>
 
             </div>
+            <div id="pagination" class=" font-mono flex justify-center mt-6 gap-1.5 text-xl text-blue-900"></div>
 
         </main>
 
