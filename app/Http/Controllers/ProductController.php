@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\ProductResourceCollection;
 use App\Models\Product;
@@ -70,15 +71,9 @@ class ProductController extends Controller
      *  id = {id}, 代表已存在圖片id
      *  若帶過來圖片沒有原本的該商品的id 則代表刪掉圖片
      */
-    public function update(Product $product, Request $request)
+    public function update(Product $product, UpdateProductRequest $request)
     {
-        $validate = $this->validate($request, [
-            'name' => ['required', 'string', 'max:15'],
-            'price' => ['required', 'integer'],
-            'stock' => ['required', 'integer', 'min:0'],
-            'depiction' => ['required', 'string'],
-            'images' => ['required', 'array', 'max:6', 'min:1'],
-        ]);
+        $validate = $request->validated();
 
         $validate['product_number'] = $product->product_number;
 
