@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\ProductResourceCollection;
 use App\Models\Product;
@@ -21,16 +22,10 @@ class ProductController extends Controller
      * 可上傳images圖片一張 ,
      * 名字,商品敘述,價格,數量
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        $validate = $this->validate($request, [
-            'name' => ['required', 'string', 'max:15'],
-            'price' => ['required', 'integer'],
-            'stock' => ['required', 'integer', 'min:0'],
-            'depiction' => ['required', 'string'],
-            'images' => ['required', 'array', 'max:6', 'min:1'],
-            'images.*' => ['image'],
-        ]);
+
+        $validate = $request->validated();
 
         DB::beginTransaction();
         try {
