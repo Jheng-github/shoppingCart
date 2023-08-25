@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\TmpImageRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\ProductResourceCollection;
@@ -156,13 +157,10 @@ class ProductController extends Controller
     /**
      * 新增圖片到tmp的位置,update圖片時,圖片需要先傳入這個位置
      */
-    public function addImageToTmp(Request $request)
+    public function addImageToTmp(TmpImageRequest $request)
     {
 
-        $this->validate($request, [
-            'images' => ['required', 'array', 'min:1'],
-            'images.*' => ['image'],
-        ]);
+        $request->validated();
 
         $this->addImage($request, self::FOLDER_TMP_IMAGES);
 
